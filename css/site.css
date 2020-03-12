@@ -118,3 +118,28 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.card {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.card img {
+    width: 100%;
+}
+
+.card-text {
+    min-height: 200px;
+    padding: 20px;
+    text-align: justify;
+}
+
+.card-title {
+    padding-left: 20px;
+}
+
+.pagination {
+    text-align: center;
+    margin: 0px auto;
+    display: block;
+    min-width: 100px;
+}
