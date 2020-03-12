@@ -17,7 +17,7 @@ Run commands:
     $ php yii db/install        install date in db
 
 Sign In
-    Login: test
-    Password: test123
+    Login: admin
+    Password: admin321
 
 ```
