@@ -9,6 +9,9 @@ return [
         'test1' => [
             'class' => 'common\modules\test1\Module',
         ],
+        'test2' => [
+            'class' => 'common\modules\test2\Module',
+        ],
     ],
     'components' => [
         'cache' => [
