@@ -257,4 +257,10 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionOop()
+    {
+        return $this->render('oop', [
+        ]);
+    }
 }

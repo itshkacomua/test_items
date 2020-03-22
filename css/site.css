@@ -143,3 +143,15 @@ a.desc:after {
     display: block;
     min-width: 100px;
 }
+
+.test-oop #int {
+    min-width: 49%;
+    min-height: 900px;
+    float: left;
+}
+
+.test-oop #out {
+    min-width: 49%;
+    min-height: 900px;
+    float: left;
+}

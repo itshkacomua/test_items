@@ -37,8 +37,9 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Тестовое задание №1', 'url' => ['/test1/default']],
-        ['label' => 'Тестовое задание №2', 'url' => ['/test2/default']],
+        ['label' => 'ТЗ №1 Yii2', 'url' => ['/test1/default']],
+        ['label' => 'ТЗ №2 OOP', 'url' => ['/oop']],
+        //['label' => 'Тестовое задание №2', 'url' => ['/test2/default']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
