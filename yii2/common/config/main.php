@@ -17,5 +17,8 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'form' => [
+            'class' => 'common\components\Form',
+        ],
     ],
 ];

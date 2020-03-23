@@ -152,6 +152,17 @@ a.desc:after {
 
 .test-oop #out {
     min-width: 49%;
-    min-height: 900px;
+    min-height: 400px;
+    float: right;
+}
+
+.test-oop #out-div {
+    min-width: 49%;
+    min-height: 500px;
+    float: right;
+}
+.test-oop .test-oop-header-int div {
+    width: 49%;
+    height: 40px;
     float: left;
 }
