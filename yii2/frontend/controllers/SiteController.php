@@ -1,6 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use common\components\Field;
+use common\components\FieldText;
+use common\components\Form;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -31,7 +34,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'get-form'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -260,7 +263,74 @@ class SiteController extends Controller
 
     public function actionOop()
     {
+        $json = '{
+            "type": "form",
+            "action": "/sign-in",
+            "fields": [
+                {
+                    "type": "text",
+                    "name": "username",
+                    "placeholder": "User name"
+                },
+                {
+                    "type": "email",
+                    "name": "email",
+                    "placeholder": "User email"
+                },
+                {
+                    "type": "password",
+                    "name": "password",
+                    "placeholder": "User password"
+                },
+                {
+                    "type": "radio",
+                    "name": "remember",
+                    "items": [
+                        {
+                            "name": "Yes",
+                            "value": "yes"
+                        },
+                        {
+                            "name": "No",
+                            "value": "no"
+                        }
+                    ]
+                },
+                {
+                    "type": "button",
+                    "submit": true,
+                    "name": "action",
+                    "value": "submit",
+                    "placeholder": "Submit form"
+                }
+            ]
+        }';
         return $this->render('oop', [
+            'json' => $json
         ]);
+    }
+
+    public function actionGetForm()
+    {
+        if (Yii::$app->request->isPost && !Yii::$app->user->isGuest) {
+            $post = Yii::$app->request->post();
+            $json = str_replace([' ', '\n', '\t'], ['', '', ''], $post['json']);
+
+            $arr = json_decode($json, true);
+
+            if (is_string($post['json']) && (is_object($arr) || is_array($arr))) {
+                $text = '';
+
+                foreach ($arr AS $name => $item) {
+                    if (is_array($item) && $name == 'fields') {
+                        Yii::$app->form->getInputField($item);
+                    } else if (is_string($item)) {
+                        Yii::$app->form->input($name, $item);
+                    }
+                }
+                return Yii::$app->form->output($text);
+            }
+        }
+        return false;
     }
 }
