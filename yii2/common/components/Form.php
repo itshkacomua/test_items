@@ -2,12 +2,13 @@
 
 namespace common\components;
 
+use common\components\FieldButton;
 use common\components\FieldInterface;
 use common\components\FieldText;
 use common\components\FieldPassword;
 use common\components\FieldEmail;
 use common\components\FieldRadio;
-use common\components\FieldButton;
+use common\components\FieldTextarea;
 use Yii;
 use yii\base\Component;
 use yii\db\Connection;
@@ -68,6 +69,10 @@ class Form extends Component
                     break;
                 case 'button':
                     $obj =  new FieldButton($item);
+                    $this->form_field .= $obj->output();
+                    break;
+                case 'textarea':
+                    $obj =  new FieldTextarea($item);
                     $this->form_field .= $obj->output();
                     break;
                 default:
